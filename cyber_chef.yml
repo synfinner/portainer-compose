@@ -1,0 +1,14 @@
+version: '3'
+networks:
+  intrNet:
+    external: true
+services:
+  chef:
+    image: mpepping/cyberchef:latest
+    networks:
+      - intNet
+    ports:
+      - 8080:8000
+    restart: unless-stopped
+    environment:
+      - TZ=America/New_York

@@ -1,0 +1,20 @@
+#mssql for use on M1-based mac. 
+version: "2"
+networks:
+  intrNet:
+    external: true
+services:
+  mssql:
+    image: mcr.microsoft.com/azure-sql-edge:latest
+    container_name: mssql
+    networks:
+      - intrNet
+    ports:
+        - 1433:1433
+    environment:
+        - PUID=1 #update with proper value
+        - PGID=0 #update with proper value
+        - ACCEPT_EULA=1
+        - SA_PASSWORD=Secret1234 #make this something secure
+    volumes:
+        - /SERVERS/mssql:/var/opt/mssql

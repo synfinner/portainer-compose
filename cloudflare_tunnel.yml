@@ -1,0 +1,19 @@
+#cf tun
+version: "2.1"
+networks:
+  intrNet:
+    external: true
+services:
+  tunnel:
+    container_name: cloudflared-tunnel
+    image: cloudflare/cloudflared
+    restart: unless-stopped
+    command: tunnel run
+    networks:
+      - intrNet
+    environment:
+      - TUNNEL_TOKEN= #enter token value
+      - PUID=0 #update to proper value
+      - PGID=1 #update to proper value
+      - TZ=America/New_York
+
