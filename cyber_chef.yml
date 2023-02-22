@@ -6,7 +6,7 @@ services:
   chef:
     image: mpepping/cyberchef:latest
     networks:
-      - intNet
+      - intrNet
     ports:
       - 8080:8000
     restart: unless-stopped
